@@ -116,6 +116,33 @@
       font-size: 12px;
       opacity: 0.8;
     }
+   <style>
+  body { ... }
+
+  /* TU WKLEJASZ NOWE STYLE */
+  .place {
+    background: white;
+    border-radius: 14px;
+    padding: 12px;
+    margin-top: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  }
+
+  .place h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 8px;
+    background: #A8E6CF;
+    margin-bottom: 6px;
+  }
+
+</style> 
   </style>
 </head>
 
@@ -129,7 +156,7 @@
 
 <div class="container">
 
-  <!-- MAPA -->
+  <!-- MAPA i POGODA -->
   <div class="card">
     <h2>🗺️ Twoja mapa</h2>
 <div class="card">
@@ -162,6 +189,10 @@
 
     <button onclick="addPlace()">➕ Dodaj</button>
   </div>
+  <div class="card">
+  <h2>🏝️ Odkrywaj Azory</h2>
+  <div id="places"></div>
+</div>
 
   <!-- LISTA -->
   <div class="card">
@@ -301,6 +332,42 @@ loadWeather();
 
 // 🔁 auto refresh co 5 minut
 setInterval(loadWeather, 300000);
+  const placesData = [
+  { name: "Praia Baixa d'Areia", type: "plaża" },
+  { name: "Ponta da Ferraria", type: "baseny termalne" },
+  { name: "Praia do Areal de Santa Bárbara", type: "plaża (surf)" },
+  { name: "Poço Azul", type: "wodospad" },
+  { name: "Piscina de Caloura", type: "naturalny basen" },
+
+  { name: "Miradouro da Grota do Inferno", type: "widok" },
+  { name: "Miradouro do Pico do Ferro", type: "widok" },
+  { name: "Miradouro da Ponta da Madrugada", type: "widok" },
+
+  { name: "Gorreana Tea Factory", type: "atrakcja" },
+  { name: "Furnas (Fumarolas)", type: "atrakcja" },
+  { name: "Poça da Dona Beija", type: "gorące źródła" }
+];
+  function renderPlaces() {
+  const container = document.getElementById("places");
+
+  container.innerHTML = "";
+
+  placesData.forEach(p => {
+    container.innerHTML += `
+      <div class="place">
+        <div class="tag">${p.type}</div>
+        <h3>📍 ${p.name}</h3>
+
+        <a target="_blank"
+          href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name)}">
+          <button>🗺️ Otwórz w mapie</button>
+        </a>
+      </div>
+    `;
+  });
+}
+
+renderPlaces();
 </script>
 </body>
 </html>
