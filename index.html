@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Azory 🌋 São Miguel 2026</title>
+
+  <style>
+    :root {
+      --primary: #4ECDC4;
+      --secondary: #A8E6CF;
+      --accent: #2E8B57;
+      --sand: #FFF3D1;
+      --text: #1f2937;
+      --white: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, Arial;
+      background: var(--white);
+      color: var(--text);
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 22px 16px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      opacity: 0.9;
+    }
+
+    .container {
+      padding: 14px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: var(--sand);
+      padding: 14px;
+      margin-bottom: 12px;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 12px;
+      background: var(--accent);
+      color: white;
+      font-size: 14px;
+    }
+
+    button.secondary {
+      background: #888;
+    }
+
+    iframe {
+      width: 100%;
+      height: 280px;
+      border: 0;
+      border-radius: 12px;
+    }
+
+    .place {
+      background: white;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 12px;
+      border: 1px solid #eee;
+    }
+
+    .row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .row button {
+      flex: 1;
+      padding: 8px;
+      font-size: 12px;
+    }
+
+    .small {
+      font-size: 12px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🌋 Azory – São Miguel</h1>
+  <p>9–16 lipca 2026</p>
+  <div id="countdown"></div>
+</header>
+
+<div class="container">
+
+  <!-- MAPA -->
+  <div class="card">
+    <h2>🗺️ Twoja mapa</h2>
+
+    <iframe
+      src="https://www.google.com/maps/d/embed?mid=1mVkEh-OSYTPI1q3q5ifLPLq2pPfLaXc">
+    </iframe>
+
+    <a href="https://www.google.com/maps/d/edit?mid=1mVkEh-OSYTPI1q3q5ifLPLq2pPfLaXc" target="_blank">
+      <button>✏️ Edytuj mapę w Google</button>
+    </a>
+  </div>
+
+  <!-- DODAJ MIEJSCE -->
+  <div class="card">
+    <h2>📍 Dodaj miejsce</h2>
+
+    <input id="name" placeholder="Nazwa miejsca"/>
+    <textarea id="desc" placeholder="Opis (opcjonalnie)"></textarea>
+
+    <button onclick="addPlace()">➕ Dodaj</button>
+  </div>
+
+  <!-- LISTA -->
+  <div class="card">
+    <h2>📌 Twoje miejsca</h2>
+    <div id="list"></div>
+    <p class="small">Zapis działa tylko na tym urządzeniu (iPhone).</p>
+  </div>
+
+</div>
+
+<script>
+const tripStart = new Date("2026-07-09");
+const tripEnd = new Date("2026-07-16");
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = Math.ceil((tripStart - now) / (1000*60*60*24));
+
+  document.getElementById("countdown").innerText =
+    diff > 0
+      ? `⏳ Do wyjazdu: ${diff} dni`
+      : `🌴 Jesteś na Azorach!`;
+}
+
+function addPlace() {
+  const name = document.getElementById("name").value.trim();
+  const desc = document.getElementById("desc").value.trim();
+
+  if (!name) return;
+
+  let data = JSON.parse(localStorage.getItem("azory_places") || "[]");
+
+  data.push({
+    id: Date.now(),
+    name,
+    desc
+  });
+
+  localStorage.setItem("azory_places", JSON.stringify(data));
+
+  document.getElementById("name").value = "";
+  document.getElementById("desc").value = "";
+
+  render();
+}
+
+function deletePlace(id) {
+  let data = JSON.parse(localStorage.getItem("azory_places") || "[]");
+  data = data.filter(p => p.id !== id);
+  localStorage.setItem("azory_places", JSON.stringify(data));
+  render();
+}
+
+function render() {
+  const list = document.getElementById("list");
+  let data = JSON.parse(localStorage.getItem("azory_places") || "[]");
+
+  if (data.length === 0) {
+    list.innerHTML = "<p class='small'>Brak dodanych miejsc</p>";
+    return;
+  }
+
+  list.innerHTML = "";
+
+  data.forEach(p => {
+    list.innerHTML += `
+      <div class="place">
+        <strong>${p.name}</strong>
+        <div class="small">${p.desc || ""}</div>
+
+        <div class="row">
+          <button class="secondary" onclick="deletePlace(${p.id})">Usuń</button>
+        </div>
+      </div>
+    `;
+  });
+}
+
+updateCountdown();
+render();
+</script>
+
+</body>
+</html>
