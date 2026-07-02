@@ -141,6 +141,37 @@
     background: #A8E6CF;
     margin-bottom: 6px;
   }
+   .place {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.place img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.place-content {
+  padding: 12px;
+}
+
+.place h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 8px;
+  background: #A8E6CF;
+  margin-bottom: 6px;
+} 
 
 </style> 
   </style>
@@ -345,23 +376,57 @@ loadWeather();
 // 🔁 auto refresh co 5 minut
 setInterval(loadWeather, 300000);
   const placesData = [
-  { name: "Praia Baixa d'Areia", type: "plaża" },
-  { name: "Ponta da Ferraria", type: "baseny termalne" },
-  { name: "Praia do Areal de Santa Bárbara", type: "plaża (surf)" },
-  { name: "Poço Azul", type: "wodospad" },
-  { name: "Piscina de Caloura", type: "naturalny basen" },
+  {
+    name: "Praia Baixa d'Areia",
+    type: "plaża",
+    desc: "Jedna z najbardziej malowniczych plaż na São Miguel.",
+    img: "https://source.unsplash.com/600x400/?azores,beach"
+  },
+  {
+    name: "Ponta da Ferraria",
+    type: "baseny",
+    desc: "Naturalne gorące baseny oceaniczne.",
+    img: "https://source.unsplash.com/600x400/?hot-springs,ocean"
+  },
+  {
+    name: "Praia do Areal de Santa Bárbara",
+    type: "plaża",
+    desc: "Najlepsza plaża surfingowa na wyspie.",
+    img: "https://source.unsplash.com/600x400/?surf,beach"
+  },
+  {
+    name: "Poço Azul",
+    type: "baseny",
+    desc: "Ukryty naturalny basen wśród zieleni.",
+    img: "https://source.unsplash.com/600x400/?waterfall,nature"
+  },
 
-  { name: "Miradouro da Grota do Inferno", type: "widok" },
-  { name: "Miradouro do Pico do Ferro", type: "widok" },
-  { name: "Miradouro da Ponta da Madrugada", type: "widok" },
+  {
+    name: "Miradouro da Grota do Inferno",
+    type: "widok",
+    desc: "Najbardziej znany punkt widokowy Azorów.",
+    img: "https://source.unsplash.com/600x400/?azores,viewpoint"
+  },
+  {
+    name: "Miradouro do Pico do Ferro",
+    type: "widok",
+    desc: "Widok na dolinę Furnas.",
+    img: "https://source.unsplash.com/600x400/?volcano,landscape"
+  },
 
-  { name: "Gorreana Tea Factory", type: "atrakcja" },
-  { name: "Furnas (Fumarolas)", type: "atrakcja" },
-  { name: "Poça da Dona Beija", type: "gorące źródła" }
- { name: "Ponta da Ferraria", type: "baseny" },
-{ name: "Praia Baixa d'Areia", type: "plaża" },
-{ name: "Miradouro da Grota do Inferno", type: "widok" },
-{ name: "Gorreana Tea Factory", type: "atrakcja" }   
+  {
+    name: "Gorreana Tea Factory",
+    type: "atrakcja",
+    desc: "Najstarsza plantacja herbaty w Europie.",
+    img: "https://source.unsplash.com/600x400/?tea,plantation"
+  },
+  {
+    name: "Furnas (Fumarolas)",
+    type: "atrakcja",
+    desc: "Gotowanie jedzenia w wulkanicznej ziemi.",
+    img: "https://source.unsplash.com/600x400/?volcano,steam"
+  }
+];   
 ];
   function renderPlaces() {
   const container = document.getElementById("places");
@@ -383,8 +448,7 @@ setInterval(loadWeather, 300000);
   });
 }
 
-filterPlaces("all");
- function filterPlaces(type) {
+function filterPlaces(type) {
   const container = document.getElementById("places");
 
   let filtered = placesData;
@@ -398,13 +462,18 @@ filterPlaces("all");
   filtered.forEach(p => {
     container.innerHTML += `
       <div class="place">
-        <div class="tag">${p.type}</div>
-        <h3>📍 ${p.name}</h3>
+        <img src="${p.img}" alt="${p.name}" />
 
-        <a target="_blank"
-          href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name)}">
-          <button>🗺️ Otwórz w mapie</button>
-        </a>
+        <div class="place-content">
+          <div class="tag">${p.type}</div>
+          <h3>📍 ${p.name}</h3>
+          <p style="font-size:13px; opacity:0.8;">${p.desc}</p>
+
+          <a target="_blank"
+            href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name)}">
+            <button>🗺️ Otwórz w mapie</button>
+          </a>
+        </div>
       </div>
     `;
   });
