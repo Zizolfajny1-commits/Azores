@@ -231,6 +231,33 @@ function render() {
 updateCountdown();
 render();
 </script>
+<script>
+async function loadWeather() {
+  try {
+    const res = await fetch(
+      "https://api.open-meteo.com/v1/forecast?latitude=37.74&longitude=-25.67&current=temperature_2m,wind_speed_10m,uv_index,precipitation,cloud_cover"
+    );
 
+    const data = await res.json();
+    const w = data.current;
+
+    document.getElementById("weather").innerHTML = `
+      🌡️ Temperatura: ${w.temperature_2m}°C<br>
+      💨 Wiatr: ${w.wind_speed_10m} km/h<br>
+      ☁️ Zachmurzenie: ${w.cloud_cover}%<br>
+      🌧️ Opady: ${w.precipitation} mm<br>
+      ☀️ UV: ${w.uv_index}
+    `;
+  } catch (e) {
+    document.getElementById("weather").innerHTML =
+      "❌ Nie udało się pobrać pogody";
+  }
+}
+
+loadWeather();
+</script>
+
+</body>
+</html>
 </body>
 </html>
