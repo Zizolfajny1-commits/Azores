@@ -189,12 +189,24 @@
 
     <button onclick="addPlace()">➕ Dodaj</button>
   </div>
-  <div class="card">
+ <div class="card">
   <h2>🏝️ Odkrywaj Azory</h2>
-  <div id="places"></div>
-</div>
 
-  <!-- LISTA -->
+  <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px;">
+    <button onclick="filterPlaces('all')">🌍 Wszystko</button>
+    <button onclick="filterPlaces('plaża')">🏝️ Plaże</button>
+    <button onclick="filterPlaces('widok')">📸 Widoki</button>
+    <button onclick="filterPlaces('atrakcja')">🏞️ Atrakcje</button>
+    <button onclick="filterPlaces('baseny')">🌊 Baseny</button>
+  </div>
+
+  <div id="places"></div>
+</div> 
+
+  
+
+
+  <!--LISTA -->
   <div class="card">
     <h2>📌 Twoje miejsca</h2>
     <div id="list"></div>
@@ -346,6 +358,10 @@ setInterval(loadWeather, 300000);
   { name: "Gorreana Tea Factory", type: "atrakcja" },
   { name: "Furnas (Fumarolas)", type: "atrakcja" },
   { name: "Poça da Dona Beija", type: "gorące źródła" }
+ { name: "Ponta da Ferraria", type: "baseny" },
+{ name: "Praia Baixa d'Areia", type: "plaża" },
+{ name: "Miradouro da Grota do Inferno", type: "widok" },
+{ name: "Gorreana Tea Factory", type: "atrakcja" }   
 ];
   function renderPlaces() {
   const container = document.getElementById("places");
@@ -367,7 +383,32 @@ setInterval(loadWeather, 300000);
   });
 }
 
-renderPlaces();
+filterPlaces("all");
+ function filterPlaces(type) {
+  const container = document.getElementById("places");
+
+  let filtered = placesData;
+
+  if (type !== "all") {
+    filtered = placesData.filter(p => p.type === type);
+  }
+
+  container.innerHTML = "";
+
+  filtered.forEach(p => {
+    container.innerHTML += `
+      <div class="place">
+        <div class="tag">${p.type}</div>
+        <h3>📍 ${p.name}</h3>
+
+        <a target="_blank"
+          href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name)}">
+          <button>🗺️ Otwórz w mapie</button>
+        </a>
+      </div>
+    `;
+  });
+} 
 </script>
 </body>
 </html>
