@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Azory PRO 🌋🐋 São Miguel</title>
+<title>Azory PRO 🌋 São Miguel</title>
 
 <style>
 body{
@@ -67,18 +67,10 @@ input,textarea{
 .place{
   background:white;
   border-radius:14px;
-  overflow:hidden;
-  margin-top:12px;
+  padding:10px;
+  margin-top:10px;
   box-shadow:0 3px 10px rgba(0,0,0,0.08);
 }
-
-.place img{
-  width:100%;
-  height:160px;
-  object-fit:cover;
-}
-
-.place-content{padding:10px;}
 
 .tag{
   display:inline-block;
@@ -113,61 +105,66 @@ input,textarea{
 
 <div class="container">
 
-<!-- MAP -->
+<!-- MAPA -->
 <div class="card">
 <h2>🗺️ Twoja mapa</h2>
 <iframe src="https://www.google.com/maps/d/embed?mid=1mVkEh-OSYTPI1q3q5ifLPLq2pPfLaXc"></iframe>
 </div>
 
-<!-- WEATHER -->
+<!-- POGODA -->
 <div class="card">
 <h2>🌤️ Pogoda live</h2>
 <div id="weather">Ładowanie...</div>
 <div id="weatherTime" class="small"></div>
 </div>
 
-<!-- WHALE SECTION -->
+<!-- DELFINY I WIELORYBY -->
 <div class="card">
-<h2>🐋🐬 Whale & Dolphin Watching</h2>
+<h2>🐬 Delfiny i wieloryby</h2>
 
 <p class="small">
-Azory to jedno z najlepszych miejsc na świecie do obserwacji wielorybów i delfinów.
-Lipiec = SZCZYT sezonu ✔
+Azory to jedno z najlepszych miejsc na świecie do obserwacji wielorybów i delfinów.  
+W lipcu masz szczyt sezonu – bardzo wysokie szanse spotkań.
 </p>
 
-<div class="card">
+<div class="place">
 <b>🐋 Kaszalot</b><br>
-<span class="small">cały rok • najczęstszy wieloryb</span>
+<span class="small">Najczęściej spotykany wieloryb – obecny cały rok</span>
 </div>
 
-<div class="card">
+<div class="place">
 <b>🐋 Płetwal błękitny</b><br>
-<span class="small">maj–lipiec • rzadki, ale możliwy</span>
+<span class="small">Największe zwierzę świata – możliwy w lipcu, ale rzadki</span>
 </div>
 
-<div class="card">
-<b>🐬 Delfiny butlonose</b><br>
-<span class="small">bardzo częste • największe grupy</span>
+<div class="place">
+<b>🐋 Fin whale</b><br>
+<span class="small">Duży, szybki wieloryb – częściej latem</span>
 </div>
 
-<div class="card">
-<b>🐬 Delfiny zwyczajne</b><br>
-<span class="small">częste • dynamiczne stada</span>
+<div class="place">
+<b>🐬 Delfin butlonosy</b><br>
+<span class="small">Najczęstszy delfin – prawie gwarantowane spotkania</span>
 </div>
 
-<div class="card">
-<b>🐬 Delfiny Risso</b><br>
-<span class="small">średnio częste • głębsze wody</span>
+<div class="place">
+<b>🐬 Delfin zwyczajny</b><br>
+<span class="small">Duże grupy, bardzo aktywne zachowanie</span>
+</div>
+
+<div class="place">
+<b>🐬 Delfin Risso</b><br>
+<span class="small">Rzadziej spotykany – charakterystyczne blizny</span>
 </div>
 
 <p class="small">
-⏰ najlepszy czas: 8:00–11:00<br>
+⏰ najlepszy czas: 8:00–11:00 lub późne popołudnie  
 📍 Ponta Delgada / Vila Franca do Campo
 </p>
 
 </div>
 
-<!-- ADD -->
+<!-- DODAJ -->
 <div class="card">
 <h2>📍 Dodaj miejsce</h2>
 <input id="name" placeholder="Nazwa"/>
@@ -190,7 +187,7 @@ Lipiec = SZCZYT sezonu ✔
 <div id="places"></div>
 </div>
 
-<!-- LIST -->
+<!-- LISTA -->
 <div class="card">
 <h2>📌 Twoje miejsca</h2>
 <div id="list"></div>
@@ -222,17 +219,43 @@ document.getElementById("weather").innerHTML=
 🌧️ ${w.precipitation} mm<br>
 ☀️ UV ${w.uv_index}`;
 
-document.getElementById("weatherTime").innerText="🔄 "+new Date().toLocaleTimeString();
+document.getElementById("weatherTime").innerText=
+"🔄 "+new Date().toLocaleTimeString();
 }
 
-/* DATA */
+/* ATRAKCJE — TWOJA ROZSZERZONA LISTA */
 const places=[
-{name:"Sete Cidades",type:"widok",desc:"wulkaniczne jeziora",img:"https://images.unsplash.com/photo-1501785888041-af3ef285b39d?w=1200"},
-{name:"Furnas",type:"atrakcja",desc:"gotowanie w ziemi",img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200"},
-{name:"Ferraria",type:"baseny",desc:"gorące oceany",img:"https://images.unsplash.com/photo-1520962880247-cfaf541c8724?w=1200"},
-{name:"Santa Barbara",type:"plaża",desc:"surf spot",img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200"},
-{name:"Grota do Inferno",type:"widok",desc:"top viewpoint",img:"https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200"},
-{name:"Gorreana Tea",type:"atrakcja",desc:"herbata Azory",img:"https://images.unsplash.com/photo-1459755486867-b55449bb39ff?w=1200"}
+{name:"Sete Cidades",type:"widok",desc:"Najbardziej znane jeziora wulkaniczne na Azorach – widok jak z innej planety."},
+{name:"Lagoa do Fogo",type:"widok",desc:"Dzika, naturalna laguna w kraterze wulkanu – jedno z najpiękniejszych miejsc wyspy."},
+{name:"Miradouro da Grota do Inferno",type:"widok",desc:"Najbardziej ikoniczny punkt widokowy São Miguel z panoramą jezior i oceanu."},
+{name:"Miradouro do Pico do Ferro",type:"widok",desc:"Widok na dolinę Furnas – szczególnie piękny o poranku."},
+{name:"Miradouro das Cumeeiras",type:"widok",desc:"Panoramiczny widok na Sete Cidades z góry."},
+{name:"Miradouro da Ponta da Madrugada",type:"widok",desc:"Wschodnia część wyspy – idealna na wschód słońca."},
+{name:"Miradouro da Ponta do Sossego",type:"widok",desc:"Zadbany ogród i spektakularne klify oceanu."},
+
+{name:"Praia Baixa d'Areia",type:"plaża",desc:"Spokojna plaża z czarnym piaskiem i widokiem na klify."},
+{name:"Praia do Areal de Santa Bárbara",type:"plaża",desc:"Najlepsza plaża surfingowa na wyspie."},
+{name:"Praia do Fogo",type:"plaża",desc:"Plaża z ciepłymi źródłami pod powierzchnią piasku."},
+{name:"Praia dos Mosteiros",type:"plaża",desc:"Czarna plaża z charakterystycznymi skałami w oceanie."},
+
+{name:"Ponta da Ferraria",type:"baseny",desc:"Naturalne gorące baseny w oceanie – unikalne miejsce na świecie."},
+{name:"Poço Azul",type:"baseny",desc:"Ukryty naturalny basen wśród zieleni i wodospadów."},
+{name:"Piscina de Caloura",type:"baseny",desc:"Naturalne baseny skalne idealne do kąpieli."},
+
+{name:"Gorreana Tea Factory",type:"atrakcja",desc:"Najstarsza plantacja herbaty w Europie – piękne zielone wzgórza."},
+{name:"Plantação de Ananás",type:"atrakcja",desc:"Uprawa ananasów w szklarniach – charakterystyczna dla Azorów."},
+{name:"Mercado da Graça",type:"atrakcja",desc:"Lokalny targ w Ponta Delgada – świeże produkty i klimat wyspy."},
+{name:"Furnas (Fumarolas)",type:"atrakcja",desc:"Wulkaniczne gotowanie w ziemi – naturalne gorące źródła."},
+{name:"Poça da Dona Beija",type:"atrakcja",desc:"Termalne baseny otoczone zielenią – idealne wieczorem."},
+{name:"Salto do Prego",type:"atrakcja",desc:"Jeden z najpiękniejszych wodospadów na wyspie."},
+{name:"Salto do Cagarrão",type:"atrakcja",desc:"Dziki wodospad w środku lasu laurowego."},
+{name:"Cascata da Ribeira Quente",type:"atrakcja",desc:"Ukryty wodospad blisko oceanu."},
+{name:"Aldeia do Sanguinho",type:"atrakcja",desc:"Opuszczona wioska w dżungli – klimatyczny trekking."},
+{name:"Parque Natural da Ribeira dos Caldeirões",type:"atrakcja",desc:"Park z wodospadami i młynami wodnymi."},
+{name:"Centro de Interpretação Ambiental",type:"atrakcja",desc:"Centrum edukacji o przyrodzie Azorów."},
+{name:"OMIC – Observatory",type:"atrakcja",desc:"Obserwatorium środowiska morskiego."},
+
+{name:"Mosteiros",type:"plaża",desc:"Miasteczko i plaża z czarnymi skałami na oceanie."}
 ];
 
 /* FILTER */
@@ -242,16 +265,9 @@ const f=t==="all"?places:places.filter(p=>p.type===t);
 
 c.innerHTML=f.map(p=>`
 <div class="place">
-<img src="${p.img}">
-<div class="place-content">
 <div class="tag">${p.type}</div>
 <h3>${p.name}</h3>
 <p class="small">${p.desc}</p>
-<a target="_blank"
-href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name)}">
-<button>📍 MAPA</button>
-</a>
-</div>
 </div>
 `).join("");
 }
@@ -259,7 +275,7 @@ href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.nam
 /* STORAGE */
 function addPlace(){
 let d=JSON.parse(localStorage.getItem("azory")||"[]");
-d.push({id:Date.now(),name:name.value,desc:desc.value});
+d.push({name:name.value,desc:desc.value});
 localStorage.setItem("azory",JSON.stringify(d));
 render();
 }
@@ -267,7 +283,7 @@ render();
 function render(){
 let d=JSON.parse(localStorage.getItem("azory")||"[]");
 list.innerHTML=d.map(p=>`
-<div class="card">
+<div class="place">
 <b>${p.name}</b><br>
 <span class="small">${p.desc}</span>
 </div>
