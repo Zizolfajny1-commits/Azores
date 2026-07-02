@@ -1,277 +1,285 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Azory 🌋 São Miguel 2026</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Azory PRO 🌋🐋 São Miguel</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, Arial;
-      font-size: 16px;
-      background: #fff;
-      color: #1f2937;
-    }
+<style>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,Arial;
+  background:#fff;
+  color:#1f2937;
+}
 
-    header {
-      background: linear-gradient(90deg, #4ECDC4, #A8E6CF);
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+header{
+  background:linear-gradient(90deg,#4ECDC4,#A8E6CF);
+  color:white;
+  text-align:center;
+  padding:20px;
+}
 
-    .container {
-      padding: 14px;
-      max-width: 900px;
-      margin: auto;
-    }
+.container{
+  padding:14px;
+  max-width:1000px;
+  margin:auto;
+}
 
-    .card {
-      background: #FFF3D1;
-      padding: 14px;
-      margin-bottom: 12px;
-      border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-    }
+.card{
+  background:#FFF3D1;
+  padding:14px;
+  border-radius:16px;
+  margin-bottom:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.06);
+}
 
-    button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 8px;
-      border: none;
-      border-radius: 10px;
-      background: #2E8B57;
-      color: white;
-    }
+iframe{
+  width:100%;
+  height:280px;
+  border:0;
+  border-radius:14px;
+}
 
-    button.secondary { background: #777; }
+button{
+  width:100%;
+  padding:10px;
+  margin-top:8px;
+  border:0;
+  border-radius:10px;
+  background:#2E8B57;
+  color:white;
+}
 
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 6px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-    }
+button.secondary{background:#777;}
 
-    iframe {
-      width: 100%;
-      height: 260px;
-      border: 0;
-      border-radius: 12px;
-    }
+input,textarea{
+  width:100%;
+  padding:10px;
+  margin-top:6px;
+  border-radius:10px;
+  border:1px solid #ddd;
+}
 
-    .small {
-      font-size: 12px;
-      opacity: 0.7;
-    }
+.small{font-size:12px;opacity:.7}
 
-    /* PLACE CARDS */
-    .place {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      margin-top: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
+/* PLACES */
+.place{
+  background:white;
+  border-radius:14px;
+  overflow:hidden;
+  margin-top:12px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
 
-    .place img {
-      width: 100%;
-      height: 170px;
-      object-fit: cover;
-    }
+.place img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+}
 
-    .place-content {
-      padding: 12px;
-    }
+.place-content{padding:10px;}
 
-    .tag {
-      display: inline-block;
-      padding: 4px 8px;
-      font-size: 12px;
-      border-radius: 8px;
-      background: #A8E6CF;
-      margin-bottom: 6px;
-    }
+.tag{
+  display:inline-block;
+  padding:4px 8px;
+  font-size:12px;
+  border-radius:8px;
+  background:#A8E6CF;
+}
 
-    .filters {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
+.filters{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
 
-    .filters button {
-      width: auto;
-      flex: 1;
-      font-size: 12px;
-      padding: 8px;
-    }
-  </style>
+.filters button{
+  flex:1;
+  font-size:12px;
+  padding:8px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>🌋 Azory – São Miguel</h1>
-  <p>9–16 lipca 2026</p>
-  <div id="countdown"></div>
+<h1>🌋 Azory PRO</h1>
+<p>São Miguel • 9–16 lipca 2026</p>
+<div id="countdown"></div>
 </header>
 
 <div class="container">
 
-  <!-- MAPA -->
-  <div class="card">
-    <h2>🗺️ Mapa</h2>
-    <iframe src="https://www.google.com/maps/d/embed?mid=1mVkEh-OSYTPI1q3q5ifLPLq2pPfLaXc"></iframe>
-  </div>
+<!-- MAP -->
+<div class="card">
+<h2>🗺️ Twoja mapa</h2>
+<iframe src="https://www.google.com/maps/d/embed?mid=1mVkEh-OSYTPI1q3q5ifLPLq2pPfLaXc"></iframe>
+</div>
 
-  <!-- POGODA -->
-  <div class="card">
-    <h2>🌤️ Pogoda – São Miguel</h2>
-    <div id="weather">Ładowanie...</div>
-    <div id="weatherTime" class="small"></div>
-  </div>
+<!-- WEATHER -->
+<div class="card">
+<h2>🌤️ Pogoda live</h2>
+<div id="weather">Ładowanie...</div>
+<div id="weatherTime" class="small"></div>
+</div>
 
-  <!-- DODAJ -->
-  <div class="card">
-    <h2>📍 Dodaj miejsce</h2>
-    <input id="name" placeholder="Nazwa"/>
-    <textarea id="desc" placeholder="Opis"></textarea>
-    <button onclick="addPlace()">➕ Dodaj</button>
-  </div>
+<!-- WHALE SECTION -->
+<div class="card">
+<h2>🐋🐬 Whale & Dolphin Watching</h2>
 
-  <!-- FILTERS -->
-  <div class="card">
-    <h2>🏝️ Odkrywaj Azory</h2>
+<p class="small">
+Azory to jedno z najlepszych miejsc na świecie do obserwacji wielorybów i delfinów.
+Lipiec = SZCZYT sezonu ✔
+</p>
 
-    <div class="filters">
-      <button onclick="filterPlaces('all')">🌍 Wszystko</button>
-      <button onclick="filterPlaces('plaża')">🏝️ Plaże</button>
-      <button onclick="filterPlaces('widok')">📸 Widoki</button>
-      <button onclick="filterPlaces('atrakcja')">🏞️ Atrakcje</button>
-      <button onclick="filterPlaces('baseny')">🌊 Baseny</button>
-    </div>
+<div class="card">
+<b>🐋 Kaszalot</b><br>
+<span class="small">cały rok • najczęstszy wieloryb</span>
+</div>
 
-    <div id="places"></div>
-  </div>
+<div class="card">
+<b>🐋 Płetwal błękitny</b><br>
+<span class="small">maj–lipiec • rzadki, ale możliwy</span>
+</div>
 
-  <!-- LISTA -->
-  <div class="card">
-    <h2>📌 Twoje miejsca</h2>
-    <div id="list"></div>
-  </div>
+<div class="card">
+<b>🐬 Delfiny butlonose</b><br>
+<span class="small">bardzo częste • największe grupy</span>
+</div>
+
+<div class="card">
+<b>🐬 Delfiny zwyczajne</b><br>
+<span class="small">częste • dynamiczne stada</span>
+</div>
+
+<div class="card">
+<b>🐬 Delfiny Risso</b><br>
+<span class="small">średnio częste • głębsze wody</span>
+</div>
+
+<p class="small">
+⏰ najlepszy czas: 8:00–11:00<br>
+📍 Ponta Delgada / Vila Franca do Campo
+</p>
+
+</div>
+
+<!-- ADD -->
+<div class="card">
+<h2>📍 Dodaj miejsce</h2>
+<input id="name" placeholder="Nazwa"/>
+<textarea id="desc" placeholder="Opis"></textarea>
+<button onclick="addPlace()">➕ Dodaj</button>
+</div>
+
+<!-- FILTERS -->
+<div class="card">
+<h2>🏝️ Odkrywaj Azory</h2>
+
+<div class="filters">
+<button onclick="filter('all')">🌍 Wszystko</button>
+<button onclick="filter('plaża')">🏝️ Plaże</button>
+<button onclick="filter('widok')">📸 Widoki</button>
+<button onclick="filter('atrakcja')">🏞️ Atrakcje</button>
+<button onclick="filter('baseny')">🌊 Baseny</button>
+</div>
+
+<div id="places"></div>
+</div>
+
+<!-- LIST -->
+<div class="card">
+<h2>📌 Twoje miejsca</h2>
+<div id="list"></div>
+</div>
 
 </div>
 
 <script>
 
 /* COUNTDOWN */
-const tripStart = new Date("2026-07-09");
+const tripStart=new Date("2026-07-09");
 
-function updateCountdown() {
-  const diff = Math.ceil((tripStart - new Date()) / (1000*60*60*24));
-  document.getElementById("countdown").innerText =
-    diff > 0 ? `⏳ Do wyjazdu: ${diff} dni` : `🌴 Jesteś na Azorach!`;
-}
-
-/* STORAGE */
-function addPlace() {
-  const name = document.getElementById("name").value;
-  const desc = document.getElementById("desc").value;
-
-  let data = JSON.parse(localStorage.getItem("azory") || "[]");
-  data.push({ id: Date.now(), name, desc });
-
-  localStorage.setItem("azory", JSON.stringify(data));
-
-  render();
-}
-
-function deletePlace(id) {
-  let data = JSON.parse(localStorage.getItem("azory") || "[]");
-  data = data.filter(p => p.id !== id);
-  localStorage.setItem("azory", JSON.stringify(data));
-  render();
-}
-
-function render() {
-  const list = document.getElementById("list");
-  let data = JSON.parse(localStorage.getItem("azory") || "[]");
-
-  list.innerHTML = data.length
-    ? data.map(p => `
-      <div class="card">
-        <b>${p.name}</b><br>
-        <span class="small">${p.desc}</span>
-        <button class="secondary" onclick="deletePlace(${p.id})">Usuń</button>
-      </div>
-    `).join("")
-    : "<p class='small'>Brak miejsc</p>";
+function countdown(){
+const diff=Math.ceil((tripStart-new Date())/86400000);
+document.getElementById("countdown").innerText=
+diff>0?`⏳ ${diff} dni do wyjazdu`:`🌴 Jesteś na Azorach!`;
 }
 
 /* WEATHER */
-async function loadWeather() {
-  const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=37.74&longitude=-25.67&current=temperature_2m,wind_speed_10m,uv_index,precipitation,cloud_cover");
-  const data = await res.json();
-  const w = data.current;
+async function weather(){
+const r=await fetch("https://api.open-meteo.com/v1/forecast?latitude=37.74&longitude=-25.67&current=temperature_2m,wind_speed_10m,uv_index,precipitation,cloud_cover");
+const d=await r.json();
+const w=d.current;
 
-  document.getElementById("weather").innerHTML =
-    `🌡️ ${w.temperature_2m}°C<br>
-     💨 ${w.wind_speed_10m} km/h<br>
-     ☁️ ${w.cloud_cover}%<br>
-     🌧️ ${w.precipitation} mm<br>
-     ☀️ UV ${w.uv_index}`;
+document.getElementById("weather").innerHTML=
+`🌡️ ${w.temperature_2m}°C<br>
+💨 ${w.wind_speed_10m} km/h<br>
+☁️ ${w.cloud_cover}%<br>
+🌧️ ${w.precipitation} mm<br>
+☀️ UV ${w.uv_index}`;
 
-  document.getElementById("weatherTime").innerText =
-    "🔄 " + new Date().toLocaleTimeString();
+document.getElementById("weatherTime").innerText="🔄 "+new Date().toLocaleTimeString();
 }
 
-/* PLACES */
-const placesData = [
-  { name:"Praia Baixa d'Areia", type:"plaża", desc:"dzika plaża", img:"https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=1200" },
-  { name:"Praia do Areal Santa Bárbara", type:"plaża", desc:"surf spot", img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200" },
-
-  { name:"Ponta da Ferraria", type:"baseny", desc:"gorące źródła", img:"https://images.unsplash.com/photo-1520962880247-cfaf541c8724?w=1200" },
-  { name:"Poça da Dona Beija", type:"baseny", desc:"termalne kąpiele", img:"https://images.unsplash.com/photo-1519817914152-22d216bb9170?w=1200" },
-
-  { name:"Grota do Inferno", type:"widok", desc:"najlepszy viewpoint", img:"https://images.unsplash.com/photo-1501785888041-af3ef285b39d?w=1200" },
-  { name:"Pico do Ferro", type:"widok", desc:"Furnas view", img:"https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200" },
-
-  { name:"Gorreana Tea Factory", type:"atrakcja", desc:"herbata Azory", img:"https://images.unsplash.com/photo-1459755486867-b55449bb39ff?w=1200" },
-  { name:"Furnas", type:"atrakcja", desc:"wulkaniczne gotowanie", img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200" }
+/* DATA */
+const places=[
+{name:"Sete Cidades",type:"widok",desc:"wulkaniczne jeziora",img:"https://images.unsplash.com/photo-1501785888041-af3ef285b39d?w=1200"},
+{name:"Furnas",type:"atrakcja",desc:"gotowanie w ziemi",img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200"},
+{name:"Ferraria",type:"baseny",desc:"gorące oceany",img:"https://images.unsplash.com/photo-1520962880247-cfaf541c8724?w=1200"},
+{name:"Santa Barbara",type:"plaża",desc:"surf spot",img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200"},
+{name:"Grota do Inferno",type:"widok",desc:"top viewpoint",img:"https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200"},
+{name:"Gorreana Tea",type:"atrakcja",desc:"herbata Azory",img:"https://images.unsplash.com/photo-1459755486867-b55449bb39ff?w=1200"}
 ];
 
-function filterPlaces(type) {
-  const container = document.getElementById("places");
+/* FILTER */
+function filter(t){
+const c=document.getElementById("places");
+const f=t==="all"?places:places.filter(p=>p.type===t);
 
-  const filtered = type === "all"
-    ? placesData
-    : placesData.filter(p => p.type === type);
+c.innerHTML=f.map(p=>`
+<div class="place">
+<img src="${p.img}">
+<div class="place-content">
+<div class="tag">${p.type}</div>
+<h3>${p.name}</h3>
+<p class="small">${p.desc}</p>
+<a target="_blank"
+href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name)}">
+<button>📍 MAPA</button>
+</a>
+</div>
+</div>
+`).join("");
+}
 
-  container.innerHTML = filtered.map(p => `
-    <div class="place">
-      <img src="${p.img}">
-      <div class="place-content">
-        <div class="tag">${p.type}</div>
-        <h3>${p.name}</h3>
-        <p class="small">${p.desc}</p>
-        <a target="_blank"
-          href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name)}">
-          <button>🗺️ Google Maps</button>
-        </a>
-      </div>
-    </div>
-  `).join("");
+/* STORAGE */
+function addPlace(){
+let d=JSON.parse(localStorage.getItem("azory")||"[]");
+d.push({id:Date.now(),name:name.value,desc:desc.value});
+localStorage.setItem("azory",JSON.stringify(d));
+render();
+}
+
+function render(){
+let d=JSON.parse(localStorage.getItem("azory")||"[]");
+list.innerHTML=d.map(p=>`
+<div class="card">
+<b>${p.name}</b><br>
+<span class="small">${p.desc}</span>
+</div>
+`).join("")||"<p class='small'>brak</p>";
 }
 
 /* INIT */
-updateCountdown();
+countdown();
+weather();
 render();
-loadWeather();
-filterPlaces("all");
-setInterval(loadWeather, 300000);
+filter("all");
+setInterval(weather,300000);
 
 </script>
 
